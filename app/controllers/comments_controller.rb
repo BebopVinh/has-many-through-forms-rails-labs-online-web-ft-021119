@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
 
   def create
-    byebug
+    params[:comment].delete(:user_attributes) if params[:comment][:user_attributes][:username].empty?
     comment = Comment.create(comment_params)
     if comment.save
-      redirect_to comment.post
+      @post = comment.post
+      redirect_to post_path(@post)
     else
       render :new
     end

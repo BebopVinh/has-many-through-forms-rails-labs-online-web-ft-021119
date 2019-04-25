@@ -1,0 +1,19 @@
+<%= form_for @comment do |f| %>
+   <%= f.label :content %>
+   <%= f.text_area :content %>
+   <br><br>
+   
+   <%= f.hidden_field :post_id, value: @comment.post_id %>
+   
+   Select a user: <%= f.collection_select :user_id, User.all, :id, :username, include_blank: 'Choose a User' %>
+   <br><br>
+
+   Or,create a new user:
+   <%= f.fields_for :user do |user|%>
+      <%= user.text_field :username, placeholder: "Username"%>
+   <% end %>
+   <br>
+   
+   <br>
+   <%= f.submit %>
+<% end %>
