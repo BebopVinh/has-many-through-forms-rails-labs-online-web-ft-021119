@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
 
   def create
+    byebug
     comment = Comment.create(comment_params)
-    redirect_to comment.post
+    if comment.save
+      redirect_to comment.post
+    else
+      render :new
+    end
   end
 
   private

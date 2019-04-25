@@ -1,1 +1,8 @@
+<h1><%= @post.title %></h1>
 
+<p><%= @post.content %></p>
+
+<% @post.users.each do |user| %>
+   <li><%= user.username %></li>
+<% end %>
+<%= render 'comment', comment: Comment.new %>

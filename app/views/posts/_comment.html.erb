@@ -1,0 +1,10 @@
+<%= form_for @comment do |f| %>
+   <%= f.label :content %>
+   <%= f.text_area :content %>
+   <br><br>
+   
+   <%= f.collection_select :user_id, User.all, :id, :username %>
+   <br><br>
+
+   <%= f.submit %>
+<% end %>
